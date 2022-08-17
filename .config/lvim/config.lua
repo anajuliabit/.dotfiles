@@ -41,18 +41,6 @@ lvim.builtin.telescope.defaults.mappings = {
   },
 }
 
--- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["t"] = {
-  name = "+Trouble",
-  r = { "<cmd>Trouble lsp_references<cr>", "References" },
-  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-  d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
-  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
-}
-
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
@@ -68,9 +56,6 @@ lvim.builtin.treesitter.ensure_installed = {
   "javascript",
   "json",
   "lua",
-  "python",
-  "typescript",
-  "tsx",
   "rust",
   "solidity",
   "yaml",
@@ -78,7 +63,7 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
-lvim.builtin.copilot = true;
+-- lvim.builtin.copilot = true;
 
 -- generic LSP settings
 
@@ -117,90 +102,55 @@ require("lvim.lsp.manager").setup("solidity_ls", {
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  --   { command = "black", filetypes = { "python" } },
-  --   { command = "isort", filetypes = { "python" } },
-  {
-    -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-    command = "prettier",
-    --     ---@usage arguments to pass to the formatter
-    --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    --     extra_args = { "--print-with", "100" },
-    --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    --     filetypes = { "typescript", "typescriptreact" },
-  },
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr })
-        end,
-      })
-    end
-  end,
-}
+-- local formatters = require "lvim.lsp.null-ls.formatters"
+-- formatters.setup {
+--   --   { command = "black", filetypes = { "python" } },
+--   --   { command = "isort", filetypes = { "python" } },
+--   {
+--     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+--     command = "prettier",
+--     --     ---@usage arguments to pass to the formatter
+--     --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+--     --     extra_args = { "--print-with", "100" },
+--     --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+--     --     filetypes = { "typescript", "typescriptreact" },
+--   },
+--   on_attach = function(client, bufnr)
+--     if client.supports_method("textDocument/formatting") then
+--       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+--       vim.api.nvim_create_autocmd("BufWritePre", {
+--         group = augroup,
+--         buffer = bufnr,
+--         callback = function()
+--           vim.lsp.buf.format({ bufnr = bufnr })
+--         end,
+--       })
+--     end
+--   end,
+-- }
 
 -- -- set additional linters
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  --   { command = "flake8", filetypes = { "python" } },
-  --   {
-  --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-  --     command = "shellcheck",
-  --     ---@usage arguments to pass to the formatter
-  --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-  --     extra_args = { "--severity", "warning" },
-  --   },
-  --   {
-  --     command = "codespell",
-  --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-  --     filetypes = { "javascript", "python" },
-  --   },:
-  {
-    command = "solhint",
-    filetypes = { "solidity" },
-  }
-}
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
+--   --   { command = "flake8", filetypes = { "python" } },
+--   --   {
+--   --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+--   --     command = "shellcheck",
+--   --     ---@usage arguments to pass to the formatter
+--   --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+--   --     extra_args = { "--severity", "warning" },
+--   --   },
+--   --   {
+--   --     command = "codespell",
+--   --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+--   --     filetypes = { "javascript", "python" },
+--   --   },:
+--   {
+--     command = "solhint",
+--     filetypes = { "solidity" },
+--   }
+-- }
 
--- Additional Plugins
-lvim.plugins = {
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  },
-  --  {
-  --    "tzachar/cmp-tabnine",
-  --    config = function()
-  --      local tabnine = require "cmp_tabnine.config"
-  --      tabnine:setup {
-  --        max_lines = 1000,
-  --        max_num_results = 20,
-  --        sort = true,
-  --      }
-  --    end,
-  --
-  --    run = "./install.sh",
-  --    requires = "hrsh7th/nvim-cmp",
-  --  },
-  {
-    "nvim-telescope/telescope-media-files.nvim"
-  },
-  { "github/copilot.vim",
-    config = function()
-      vim.g.copilot_no_tab_map = true
-      vim.g.copilot_assume_mapped = true
-      -- vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-    end,
-  },
-}
 --
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 
@@ -216,3 +166,17 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+-- lvim.plugins = {
+--   { "github/copilot.vim",
+--     config = function()
+--       require("user.plugins.copilot").config()
+--     end,
+--   },
+
+-- }
+
+lvim.builtin.copilot = true;
+
+require "user.mappings"
+
+require "user.plugins"

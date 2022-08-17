@@ -32,7 +32,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -80,8 +79,8 @@ alias ...="cd ../.. && clear && ls"
 alias ....="cd ../../.. && clear && ls"
 alias .....="cd ../../../.. && clear && ls"
 
+# Dotfiles with git bare
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
-# export PATH="$HOME/Dev/git-fuzzy/bin:$PATH"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -113,3 +112,8 @@ zinit light bigH/git-fuzzy
 
 # Using vim motion on zsh
 bindkey -v
+
+PATH=$PATH:~/.local/bin
+export PATH
+
+
