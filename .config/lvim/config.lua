@@ -1,7 +1,7 @@
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "kanagawa"
 lvim.use_icons = false
 
 lvim.builtin.alpha.active = true
@@ -39,3 +39,4 @@ require("lvim.lsp.manager").setup("solidity_ls", {
 
 require "user.mappings"
 require "user.plugins"
+require "user.theme"

@@ -26,4 +26,13 @@ lvim.plugins = {
       end, 1000)
     end,
   },
+  { 'junegunn/fzf', run = ":call fzf#install()" },
+  { "junegunn/fzf.vim" },
+  {
+    "rebelot/kanagawa.nvim",
+    config = function()
+      require("user.theme").kanagawa()
+      vim.cmd [[colorscheme kanagawa]]
+    end,
+  },
 }
