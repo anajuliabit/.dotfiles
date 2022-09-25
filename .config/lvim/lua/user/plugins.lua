@@ -35,4 +35,7 @@ lvim.plugins = {
       vim.cmd [[colorscheme kanagawa]]
     end,
   },
+  {
+    "nvim-telescope/telescope-live-grep-args.nvim",
+  },
 }

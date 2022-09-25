@@ -1,9 +1,5 @@
-
-
 lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-
--- override a default keymapping
 lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
 vim.api.nvim_set_keymap("n", "<C-J>", "<C-W><C-J>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-K>", "<C-W><C-K>", { noremap = true, silent = true })
@@ -27,14 +23,26 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<C-k>"] = actions.move_selection_previous,
   },
 }
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["sc"] = { "<cmd>lua require('telescope.builtin').live_grep({ search_dirs = { '~/Dev/work/boson-protocol-contracts/contracts/' } })<CR>", "Search Contracts " }
--- lim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
--- }
+
+-- Whichkey mappings
+lvim.builtin.which_key.mappings["sc"] = {
+  "<cmd>lua require('telescope.builtin').live_grep({ search_dirs = { '~/Dev/work/boson-protocol-contracts/contracts/' } })<CR>",
+  "Search within contracts"
+}
+lvim.builtin.which_key.mappings["st"] = {
+  "<cmd>lua require('telescope.builtin').live_grep({ search_dirs = { '~/Dev/work/boson-protocol-contracts/test/' } })<CR>",
+  "Search within tests"
+}
+lvim.builtin.which_key.mappings["ss"] = {
+  "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>",
+  "String",
+}
+lvim.builtin.which_key.mappings["t"] = {
+  name = "+Trouble",
+  r = { "<cmd>Trouble lsp_references<cr>", "References" },
+  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+  d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
+  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
+}
