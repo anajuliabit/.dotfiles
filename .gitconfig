@@ -1,0 +1,10 @@
+[user]
+	email = anajuliabit@gmail.com
+	name = Ana Julia
+[init]
+	defaultBranch = main
+[core]
+	editor = vim
+	pager =  vim -R -
+[pull]
+	rebase = false
