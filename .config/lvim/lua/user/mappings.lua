@@ -46,3 +46,6 @@ lvim.builtin.which_key.mappings["t"] = {
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 }
+-- buffer navigation
+lvim.keys.normal_mode["<space-n>"] = ":BufferLineCyclePrev<cr>"
+lvim.keys.normal_mode["<space-m>"] = ":BufferLineCycleNext<cr>"

@@ -8,7 +8,7 @@ ENABLE_CORRECTION="true"
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git)
+plugins=(git command-time)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,7 +62,7 @@ alias ....="cd ../../.. && clear && ls"
 alias .....="cd ../../../.. && clear && ls"
 
 # Dotfiles with git bare
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
+alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -97,3 +97,5 @@ bindkey -v
 
 
 
+
+export PATH="$PATH:/Users/anajulia/.foundry/bin"

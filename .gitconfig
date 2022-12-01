@@ -5,6 +5,5 @@
 	defaultBranch = main
 [core]
 	editor = vim
-	pager =  vim -R -
 [pull]
 	rebase = false

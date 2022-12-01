@@ -15,7 +15,7 @@ lvim.plugins = {
     config = function()
       -- disable cmp's ghost text override
       lvim.builtin.cmp.experimental.ghost_text = false
-      vim.g.copilot_filetypes = { xml = false, markdown = false }
+      vim.g.copilot_filetypes = { xml = false }
       vim.g.copilot_no_tab_map = true
       vim.api.nvim_set_keymap("i", "<C-a>", 'copilot#Accept("\\<CR>")', { silent = true, expr = true })
       vim.api.nvim_set_keymap("i", "<C-j>", "copilot#Previous()", { silent = true, expr = true })
@@ -28,11 +28,20 @@ lvim.plugins = {
   },
   { 'junegunn/fzf', run = ":call fzf#install()" },
   { "junegunn/fzf.vim" },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   config = function()
+  --     require("user.theme").kanagawa()
+  --     vim.cmd [[colorscheme kanagawa]]
+  --   end,
+  -- },
   {
-    "rebelot/kanagawa.nvim",
+    "catppuccin/nvim",
+    as = "catppuccin",
+    -- run = ":CatppuccinCompile",
     config = function()
-      require("user.theme").kanagawa()
-      vim.cmd [[colorscheme kanagawa]]
+      require("user.theme").catppuccin()
+      vim.cmd [[colorscheme catppuccin-mocha]]
     end,
   },
   {
