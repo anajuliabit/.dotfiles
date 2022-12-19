@@ -19,6 +19,7 @@ M.kanagawa = function()
     overrides = {
       diffRemoved = { fg = "#E46876" },
     },
+    transparent_background = lvim.transparent_window,
   }
 end
 

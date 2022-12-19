@@ -4,6 +4,6 @@ formatters.setup {
   {
     exe = "prettier",
     filetypes = { "javascript" },
-    args = {}
+    args = { "--find-config-path", "--config" }
   },
 }
