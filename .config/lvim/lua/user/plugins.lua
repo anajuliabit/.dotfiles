@@ -21,20 +21,13 @@ lvim.plugins = {
       vim.api.nvim_set_keymap("i", "<C-j>", "copilot#Previous()", { silent = true, expr = true })
       vim.api.nvim_set_keymap("i", "<C-k>", "copilot#Next()", { silent = true, expr = true })
       vim.api.nvim_set_keymap("i", "<C-d>", "copilot#Dismiss()", { silent = true, expr = true })
-      vim.defer_fn(function()
-        vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#888888" })
-      end, 1000)
+      --   vim.defer_fn(function()
+      --     vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#888888" })
+      --   end, 1000)
     end,
   },
   { 'junegunn/fzf', run = ":call fzf#install()" },
   { "junegunn/fzf.vim" },
-  -- {
-  --   "rebelot/kanagawa.nvim",
-  --   config = function()
-  --     require("user.theme").kanagawa()
-  --     vim.cmd [[colorscheme kanagawa]]
-  --   end,
-  -- },
   {
     "catppuccin/nvim",
     as = "catppuccin",
@@ -46,5 +39,23 @@ lvim.plugins = {
   },
   {
     "nvim-telescope/telescope-live-grep-args.nvim",
+  },
+  {
+    "mxsdev/nvim-dap-vscode-js",
+    requires = { "mfussenegger/nvim-dap" },
+    ft = {
+      "javascript",
+      "typescript",
+    },
+    lazy = true,
+    event = { "BufReadPre", "BufNew" },
+    config = function()
+      require("dap-vscode-js").setup {
+        debugger_path = vim.fn.stdpath "data" .. "/mason/packages/js-debug-adapter",
+        debugger_cmd = { "js-debug-adapter" },
+        adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+      }
+    end,
+    enabled = true,
   },
 }
