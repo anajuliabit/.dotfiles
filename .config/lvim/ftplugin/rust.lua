@@ -1,6 +1,5 @@
 local manager = require "lvim.lsp.manager"
 
-
 local on_attach = function(client, bufnr)
   local cap = client.resolved_capabilities
   -- Only highlight if compatible with the language

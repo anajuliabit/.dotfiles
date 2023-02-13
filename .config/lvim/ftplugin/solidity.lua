@@ -15,7 +15,3 @@ manager.setup("solidity", {
     solidity = { includePath = '' }
   }
 })
-
--- manager.setup("solc", {
---   root_dir = util.root_pattern("hardhat.config.*", ".git")
--- })
