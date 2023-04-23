@@ -70,10 +70,20 @@ return require("packer").startup(function(use)
 
 	use({
 		"folke/trouble.nvim",
-
 		requires = "nvim-tree/nvim-web-devicons",
 	})
-
+	use({
+		"mxsdev/nvim-dap-vscode-js",
+		requires = { "mfussenegger/nvim-dap" },
+	})
+	use({
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npm run compile",
+	})
+	use("github/copilot.vim")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use("folke/neodev.nvim")
 	if packer_bootstrap then
 		require("packer").sync()
 	end

@@ -4,19 +4,23 @@ v0.9.0
 
 # Plugins
 
-• harpoon
-• mason-lspconfig.nvim
-• mason.nvim
-• nvim-lspconfig
-• nvim-treesitter
-• packer.nvim
-• playground
-• plenary.nvim
-• rose-pine
-• telescope.nvim
-• trouble.nvim
-• undotree
-• vim-fugitive
+- copilot.vim
+- harpoon
+- mason-lspconfig.nvim
+- mason.nvim
+- neodev.nvim
+- nvim-dap-ui
+- nvim-lspconfig
+- nvim-treesitter
+- packer.nvim
+- playground
+- plenary.nvim
+- rose-pine
+- telescope.nvim
+- trouble.nvim
+- undotree
+- vim-fugitive
+- nvim-dap-vscode-js
 
 ## Theme
 
@@ -24,15 +28,16 @@ v0.9.0
 
 ## TODO
 
+- [x] basic keymaps
 - LSP
-  - [x] Solidity - had to fork mason-registry. waiting PR https://github.com/mason-org/mason-registry/pull/1322
+  - [x] Solidity - had to fork mason-registry. [opened PR to add solidity LSP to mason registry](https://github.com/mason-org/mason-registry/pull/1322)
   - [x] Javascript
   - [x] Typescript
   - [x] Lua
   - [ ] Rust
 - DAP
-  - [ ] Javascript
-  - [ ] Solidity ?
+  - [x] Javascript
+  - [x] Typescript
 - Linter/formatter
   - [x] Solidity
   - [x] Javascript
@@ -41,5 +46,4 @@ v0.9.0
   - [ ] Rust
 - Extra plugins
   - [ ] Markdown preview
-  - [ ] Copilot
-- [ ] Confs for show lines, maps for split window, buffers
+  - [x] Copilot
