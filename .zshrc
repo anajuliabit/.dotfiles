@@ -3,8 +3,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="arrow"
 
-ENABLE_CORRECTION="true"
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -12,15 +10,8 @@ plugins=(git command-time)
 
 source $ZSH/oh-my-zsh.sh
 
-PATH=$PATH:~/.local/bin
-export PATH
-
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='lvim'
-else
 export EDITOR='nvim'
-fi 
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
@@ -28,14 +19,10 @@ export NVM_DIR="$HOME/.nvm"
 
 ## Alias
 alias boson="cd ~/Dev/work/boson-protocol-contracts"
-
-# -------------------------------------------------------------------
-# make some commands (potentially) less destructive
-# -------------------------------------------------------------------
 alias 'rm=rm -i'
+alias vim='nvim'
 
 # Git
-# -------------------------------------------------------------------
 alias ga='git add'
 alias gp='git push'
 alias gl='git log | lvim -c "set filetype=git" -'
@@ -56,7 +43,6 @@ alias gf='git reflog | vim -R -'
 
 
 # shortcuts
-# -------------------------------------------------------------------
 alias ..="cd .. && clear && ls"
 alias ...="cd ../.. && clear && ls"
 alias ....="cd ../../.. && clear && ls"
@@ -64,6 +50,7 @@ alias .....="cd ../../../.. && clear && ls"
 
 # Dotfiles with git bare
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
+
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -96,7 +83,12 @@ zinit light bigH/git-fuzzy
 # Using vim motion on zsh
 bindkey -v
 
-
-
-
+export PATH=$PATH:~/.local/bin
 export PATH="$PATH:/Users/anajulia/.foundry/bin"
+export PATH="$PATH:/Users/anajulia/Library/Python/3.8/bin"
+export PATH="$PATH:/Users/anajulia/Dev/luarocks-3.9.2/lua_modules/bin/./../../lua_modules/bin:/Users/anajulia/.luarocks/bin"
+
+# autojump
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+
