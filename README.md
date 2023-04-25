@@ -9,6 +9,8 @@ dotfiles checkout
 
 ## Configurations
 
-- [Tmux](.tmux.conf)
+- [Tmux](./config/tmux/tmux.conf)
 - [NeoVim](./.config/nvim)
 - [ZSH](.zshrc)
+- [Yabai](./config/yabai/yabairc)
+- [Skhd](./config/skhd/skhdrc)
