@@ -10,5 +10,5 @@ dotfiles checkout
 ## Configurations
 
 - [Tmux](.tmux.conf)
-- [Lunar Vim](./.config/lvim)
-- [ZSH](.zshrc) 
+- [NeoVim](./.config/nvim)
+- [ZSH](.zshrc)

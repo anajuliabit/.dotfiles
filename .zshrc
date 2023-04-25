@@ -91,4 +91,4 @@ export PATH="$PATH:/Users/anajulia/Dev/luarocks-3.9.2/lua_modules/bin/./../../lu
 # autojump
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
-
+export XDG_CONFIG_HOME="$HOME/.config"
