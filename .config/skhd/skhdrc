@@ -4,7 +4,7 @@ alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
-#change focus between external displays (left and right)
+#change focus between external displays 
 shift + alt - j: yabai -m display --focus north 
 shift + alt - k: yabai -m display --focus south
 
@@ -35,3 +35,13 @@ shift + alt - 4 : yabai -m window --space 4;
 shift + alt - 5 : yabai -m window --space 5;
 shift + alt - 6 : yabai -m window --space 6;
 shift + alt - 7 : yabai -m window --space 7;
+
+# change window focus within space
+alt - 1 : yabai -m window --focus --space 1
+alt - 2 : yabai -m window --focus --space 2
+alt - 3 : yabai -m window --focus --space 3
+alt - 4 : yabai -m window --focus --space 4
+alt - 5 : yabai -m window --focus --space 5
+alt - 6 : yabai -m window --focus --space 6
+alt - 7 : yabai -m window --focus --space 7
+

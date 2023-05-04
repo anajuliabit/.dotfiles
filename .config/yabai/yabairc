@@ -8,7 +8,7 @@ yabai -m config top_padding 6
 yabai -m config bottom_padding 6
 yabai -m config left_padding 6
 yabai -m config right_padding 6
-yabai -m config window_gap 6
+yabai -m config window_gap 3
 
 # center mouse on window with focus
 yabai -m config mouse_follows_focus on
@@ -20,9 +20,12 @@ yabai -m config mouse_action1 move
 # set modifier + right-click drag to resize window
 yabai -m config mouse_action2 resize
 
-
 # when window is dropped in center of another window, swap them (on edges it will split it)
 yabai -m mouse_drop_action swap
 
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="WhatsApp" manage=off
+yabai -m rule --add app="^Slack$" manage=off
+yabai -m rule --add app="^Telegram$" manage=off
+
