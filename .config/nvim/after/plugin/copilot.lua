@@ -1,5 +1,4 @@
 vim.g.copilot_filetypes = { xml = false }
-
 vim.g.copilot_no_tab_map = true
 vim.api.nvim_set_keymap(
 	"i",
@@ -28,17 +27,18 @@ vim.api.nvim_set_keymap(
 --   vim.defer_fn(function()
 --     vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#888888" })
 --   end, 1000)
--- vim.cmd([[
--- 				let g:copilot_enable = 1
--- 				let g:copilot_filetypes = {
--- 						\ '*': v:true,
--- 						\ 'markdown':v:true,
--- 						\ 'yaml': v:true,
--- 						\ 'go': v:false,
--- 						\ 'lua': v:true,
--- 						\ 'gitcommit': v:true,
--- 						\ "TelescopePrompt": v:false,
--- 							\ }
---
--- 				" imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
--- 						]])
+vim.cmd([[
+ 				let g:copilot_enable = 1
+ 				let g:copilot_filetypes = {
+ 						\ '*': v:true,
+ 						\ 'markdown':v:true,
+ 						\ 'yaml': v:true,
+ 						\ 'lua': v:true,
+ 						\ 'gitcommit': v:true,
+                        \ 'latex': v:true,
+                        \ 'tex': v:true,
+ 						\ "TelescopePrompt": v:false,
+ 							\ }
+
+ 				" imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
+ 						]])

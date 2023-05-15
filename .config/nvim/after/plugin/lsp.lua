@@ -1,4 +1,3 @@
-local lspconfig = require("lspconfig")
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -31,6 +30,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+local lspconfig = require("lspconfig")
 lspconfig.tsserver.setup({})
 lspconfig.rust_analyzer.setup({
 	-- Server-specific settings. See `:help lspconfig-setup`
@@ -41,7 +41,14 @@ lspconfig.rust_analyzer.setup({
 lspconfig.solidity.setup({
 	cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
 	filetypes = { "solidity" },
-	root_dir = require("lspconfig.util").find_git_ancestor,
+	--	root_dir = require("lspconfig.util").find_git_ancestor,
+	root_dir = function(fname)
+		return require("lspconfig.util").root_pattern(
+			"hardhat.config.js",
+			"package.json",
+			"foundry.toml"
+		)(fname) or require("lspconfig.util").path.dirname(fname)
+	end,
 	single_file_support = true,
 })
 
@@ -67,3 +74,17 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
+
+lspconfig.grammarly.setup({
+	filetypes = { "markdown", "tex", "text" },
+
+	cmd = {
+		"/Users/anajulia/.nvm/versions/node/v16.15.1/bin/grammarly-languageserver",
+		"--stdio",
+	},
+	init_options = {
+		clientId = env.GRAMMARLY_CLIENT_ID,
+	},
+})
+
+lspconfig.marksman.setup({})

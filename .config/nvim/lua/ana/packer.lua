@@ -87,4 +87,41 @@ return require("packer").startup(function(use)
 	if packer_bootstrap then
 		require("packer").sync()
 	end
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
+	use("artempyanykh/marksman")
+	use("theHamsta/nvim-dap-virtual-text")
+	use({
+		"renerocksai/telekasten.nvim",
+		requires = { "nvim-telescope/telescope.nvim" },
+	})
+	use({
+		"lervag/vimtex",
+		ft = { "tex" },
+		lazy = false,
+		opts = { patterns = { "*.tex" } },
+		config = function()
+			vim.g.vimtex_view_method = "skim"
+			vim.g.vimtex_view_skim_sync = 1
+			vim.g.vimtex_view_skim_activate = 1
+			vim.g.vimtex_mappings_enabled = true
+			vim.g.tex_flavor = "latex"
+			--vim.g.vimtex_quickfix_mode = 2
+			--vim.g.vimtex_quickfix_open_on_warning = 0
+			vim.g.vimtex_compiler_method = "tectonic"
+			vim.g.vimtex_view_general_options = "-r @line @pdf @tex"
+			vim.g.vimtex_view_general_viewer =
+				"/Applications/Skim.app/Contents/SharedSupport/displayline"
+		end,
+	})
+	use({
+		"donRaphaco/neotex",
+		ft = { "tex" },
+	})
 end)

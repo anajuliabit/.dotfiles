@@ -47,3 +47,5 @@ v0.9.0
 - Extra plugins
   - [ ] Markdown preview
   - [x] Copilot
+- [ ] switch between projects with tmux
+- [ ] macos windows control

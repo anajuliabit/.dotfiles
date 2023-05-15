@@ -8,6 +8,9 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
+--vim.opt.statusline = "%<%f %h%m%r%{mode()} %= %l,%c %L>"
+
+vim.opt.statusline = ""
 vim.opt.wrap = false
 
 vim.opt.swapfile = false
@@ -27,3 +30,5 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
+
+vim.o.clipboard = "unnamedplus"

@@ -16,7 +16,8 @@ dap_vscode_js.setup({
 	},
 })
 
-require("dap").configurations.javascript = {
+local dap = require("dap")
+dap.configurations.javascript = {
 	{
 		name = "Debug Tests",
 		type = "pwa-node",
@@ -24,7 +25,7 @@ require("dap").configurations.javascript = {
 		args = {
 			"${file}",
 			"--config",
-			"./hardhat-fork.config.js",
+			"./hardhat.config.js",
 			"--show-stack-traces",
 		},
 		sourceMaps = true,
@@ -40,24 +41,97 @@ require("dap").configurations.javascript = {
 	},
 }
 
-vim.keymap.set("n", "<leader>dc", "<cmd>lua require('dap').continue()<CR>")
-vim.keymap.set(
-	"n",
-	"<leader>dt",
-	"<cmd>lua require('dap').toggle_breakpoint()<CR>"
-)
-vim.keymap.set("n", "<leader>do", "<cmd>lua require('dap').step_over()<CR>")
-vim.keymap.set("n", "<leader>di", "<cmd>lua require('dap').step_into()<CR>")
+local dapui = require("dapui")
+dapui.setup({
+	controls = {
+		element = "console",
+		enabled = true,
+	},
+	layouts = {
+		{
+			elements = {
+				{
+					id = "console",
+					size = 1,
+				},
+			},
+			position = "left",
+			size = 60,
+		},
+		{
+			elements = {
+				{
+					id = "scopes",
+					size = 0.25,
+				},
+				{
+					id = "breakpoints",
+					size = 0.25,
+				},
+				{
+					id = "stacks",
+					size = 0.25,
+				},
+				{
+					id = "watches",
+					size = 0.25,
+				},
+			},
+			position = "bottom",
+			size = 10,
+		},
+	},
+})
 
-require("dapui").setup()
-
-local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+
+require("nvim-dap-virtual-text").setup()
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>dc",
+	":lua require('dap').continue()<CR>",
+	{}
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>dt",
+	":lua require('dap').toggle_breakpoint()<CR>",
+	{}
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>do",
+	":lua require('dap').step_over()<CR>",
+	{}
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>di",
+	":lua require('dap').step_into()<CR>",
+	{}
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>du",
+	":lua require('dapui').toggle()<CR>",
+	{}
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>dd",
+	":lua require('dap').step_out()<CR>",
+	{}
+)
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>db",
+	":lua require('dap').set_breakpoint(vim.fn.input('Condition:'))<CR>",
+	{}
+)

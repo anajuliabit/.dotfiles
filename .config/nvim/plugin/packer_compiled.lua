@@ -84,6 +84,18 @@ _G.packer_plugins = {
     path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/anajulia/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
+  marksman = {
+    loaded = true,
+    path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/marksman",
+    url = "https://github.com/artempyanykh/marksman"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -99,6 +111,13 @@ _G.packer_plugins = {
     path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
   },
+  neotex = {
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/Users/anajulia/.local/share/nvim/site/pack/packer/opt/neotex",
+    url = "https://github.com/donRaphaco/neotex"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -113,6 +132,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
     url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-dap-virtual-text"] = {
+    loaded = true,
+    path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
+    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
   },
   ["nvim-dap-vscode-js"] = {
     loaded = true,
@@ -155,6 +179,11 @@ _G.packer_plugins = {
     path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/rose-pine",
     url = "https://github.com/rose-pine/neovim"
   },
+  ["telekasten.nvim"] = {
+    loaded = true,
+    path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/telekasten.nvim",
+    url = "https://github.com/renerocksai/telekasten.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -175,6 +204,14 @@ _G.packer_plugins = {
     path = "/Users/anajulia/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  vimtex = {
+    config = { "\27LJ\2\nö\2\0\0\2\0\r\0\0296\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\4\0006\0\0\0009\0\1\0)\1\1\0=\1\5\0006\0\0\0009\0\1\0+\1\2\0=\1\6\0006\0\0\0009\0\1\0'\1\b\0=\1\a\0006\0\0\0009\0\1\0'\1\n\0=\1\t\0006\0\0\0009\0\1\0'\1\f\0=\1\v\0K\0\1\0>/Applications/Skim.app/Contents/SharedSupport/displayline\31vimtex_view_general_viewer\23-r @line @pdf @tex vimtex_view_general_options\nlatex\15tex_flavor\28vimtex_mappings_enabled\30vimtex_view_skim_activate\26vimtex_view_skim_sync\tskim\23vimtex_view_method\6g\bvim\0" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex",
+    url = "https://github.com/lervag/vimtex"
+  },
   ["vscode-js-debug"] = {
     loaded = false,
     needs_bufread = false,
@@ -184,10 +221,33 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: markdown-preview.nvim
+time([[Setup for markdown-preview.nvim]], true)
+try_loadstring("\27LJ\2\n=\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\2\0\0\rmarkdown\19mkdp_filetypes\6g\bvim\0", "setup", "markdown-preview.nvim")
+time([[Setup for markdown-preview.nvim]], false)
 -- Config for: rose-pine
 time([[Config for rose-pine]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
 time([[Config for rose-pine]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tex ++once lua require("packer.load")({'neotex', 'vimtex'}, { ft = "tex" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
+vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: /Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/cls.vim]], true)
+vim.cmd [[source /Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/cls.vim]]
+time([[Sourcing ftdetect script at: /Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/cls.vim]], false)
+time([[Sourcing ftdetect script at: /Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]], true)
+vim.cmd [[source /Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]]
+time([[Sourcing ftdetect script at: /Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]], false)
+time([[Sourcing ftdetect script at: /Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tikz.vim]], true)
+vim.cmd [[source /Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tikz.vim]]
+time([[Sourcing ftdetect script at: /Users/anajulia/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tikz.vim]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
