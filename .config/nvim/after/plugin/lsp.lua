@@ -83,7 +83,7 @@ lspconfig.grammarly.setup({
 		"--stdio",
 	},
 	init_options = {
-		clientId = env.GRAMMARLY_CLIENT_ID,
+		clientId = "",
 	},
 })
 
