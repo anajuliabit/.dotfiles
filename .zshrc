@@ -8,6 +8,7 @@ ZSH_THEME="arrow"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 plugins=(git command-time)
 
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions

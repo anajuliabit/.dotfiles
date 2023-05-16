@@ -7,10 +7,19 @@ dotfiles config --local status.showUntrackedFiles no
 dotfiles checkout
 ```
 
-## Configurations
+## Terminal:
 
-- [Tmux](./config/tmux/tmux.conf)
-- [NeoVim](./.config/nvim)
-- [ZSH](.zshrc)
-- [Yabai](./config/yabai/yabairc)
-- [Skhd](./config/skhd/skhdrc)
+- Tmux
+- Tmuxifier
+- Neovim
+- Zsh
+
+## Tiling window + macos hotkeys:
+
+- Yabai
+- Skhd
+
+## Dev stuff:
+
+- Github CLI
+- Shell GPT
