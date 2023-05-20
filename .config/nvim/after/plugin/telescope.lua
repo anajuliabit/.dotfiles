@@ -12,9 +12,9 @@ end, option)
 vim.keymap.set("n", "<leader>fc", builtin.grep_string, option)
 --find line on buffer
 vim.keymap.set("n", "<leader>fl", builtin.current_buffer_fuzzy_find, option)
-vim.keymap.set("n", "<leader>fs", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end, option)
+--vim.keymap.set("n", "<leader>fs", function()
+--	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+--end, option)
 
 require("telescope").setup({
 	defaults = {
@@ -28,12 +28,13 @@ require("telescope").setup({
 			"dist",
 			"node_modules",
 			"submodules",
+			"addresses",
 		},
 	},
 	pickers = {
 		find_files = {
 			theme = "dropdown",
-			previewer = false,
+			--previewer = false,
 			layout_config = {
 				width = 0.5,
 				height = 0.5,

@@ -9,10 +9,6 @@ dap_vscode_js.setup({
 	debugger_cmd = { "js-debug-adapter" },
 	adapters = {
 		"pwa-node",
-		"pwa-chrome",
-		"pwa-msedge",
-		"node-terminal",
-		"pwa-extensionHost",
 	},
 })
 
@@ -38,6 +34,7 @@ dap.configurations.javascript = {
 		internalConsoleOptions = "neverOpen",
 		outFiles = { "${workspaceFolder}/**/*.js", "**/@ethersproject/**/*.js" },
 		skipFiles = { "<node_internals>/**", "node_modules" },
+		port = 9229,
 	},
 }
 
@@ -89,8 +86,6 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
-
-require("nvim-dap-virtual-text").setup()
 
 vim.api.nvim_set_keymap(
 	"n",

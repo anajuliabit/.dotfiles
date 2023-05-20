@@ -22,11 +22,6 @@ shift + alt - n : yabai -m window --space next;
 # shift + alt - 1 : yabai -m window --display north; yabai -m display --focus north;
 # shift + alt - 2 : yabai -m window --display south; yabai -m display --focus south;
 
-# stop/start/restart yabai
-ctrl + alt - q : brew services stop yabai
-ctrl + alt - s : brew services start yabai
-ctrl + alt - r : brew services restart yabai
-
 # move window to space #
 shift + alt - 1 : yabai -m window --space 1;
 shift + alt - 2 : yabai -m window --space 2;
@@ -44,4 +39,9 @@ alt - 4 : yabai -m window --focus --space 4
 alt - 5 : yabai -m window --focus --space 5
 alt - 6 : yabai -m window --focus --space 6
 alt - 7 : yabai -m window --focus --space 7
+
+# stop/start/restart yabai
+ctrl + alt - q : brew services stop yabai
+ctrl + alt - s : brew services start yabai
+ctrl + alt - r : brew services restart yabai
 
