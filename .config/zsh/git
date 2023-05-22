@@ -1,0 +1,16 @@
+alias gs='git fuzzy status'
+alias gd='git fuzzy diff'
+alias gm='git commit -m'
+alias gma='git commit -am'
+alias gp='git push'
+alias gpu='git pull'
+alias gst='git stash'
+alias gco='git checkout'
+alias 'rm=rm -i'
+alias ..="cd .. && clear && ls"
+alias ...="cd ../.. && clear && ls"
+alias ....="cd ../../.. && clear && ls"
+alias .....="cd ../../../.. && clear && ls"
+alias vim='nvim'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/dev/code/dotfiles/ --work-tree=$HOME' 
+

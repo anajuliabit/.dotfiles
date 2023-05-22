@@ -10,14 +10,7 @@ plugins=(git command-time)
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
 
-alias 'rm=rm -i'
-alias ..="cd .. && clear && ls"
-alias ...="cd ../.. && clear && ls"
-alias ....="cd ../../.. && clear && ls"
-alias .....="cd ../../../.. && clear && ls"
-alias vim='nvim'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
-alias git='git fuzzy'
+. ~/.config/zsh/git # git aliases
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -63,3 +56,4 @@ source $ZSH/oh-my-zsh.sh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 
+source /Users/anajulia/.config/op/plugins.sh
