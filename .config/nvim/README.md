@@ -2,7 +2,7 @@
 
 v0.9.0
 
-# Plugins
+**Plugins**
 
 - copilot.vim
 - mason-lspconfig.nvim
@@ -26,28 +26,24 @@ v0.9.0
 - harpoon
 - telekasten
 
-## Theme
+**Theme**: [Rose Pine](https://github.com/rose-pine/neovim)
 
-[Rose Pine](https://github.com/rose-pine/neovim)
+**LSP**
 
-## TODO
+- [x] Javascript
+- [x] Typescript
+- [x] Lua
+- [ ] Rust
 
-- [x] basic keymaps
-- LSP
-  - [x] Solidity
-  - [x] Javascript
-  - [x] Typescript
-  - [x] Lua
-  - [ ] Rust
-- DAP
-  - [x] Javascript
-  - [x] Typescript
-- Linter/formatter
-  - [x] Solidity
-  - [x] Javascript
-  - [x] Typescript
-  - [x] Lua
-  - [ ] Rust
-- Extra plugins
-  - [ ] Markdown preview
-  - [x] Copilot
+**DAP**
+
+- [x] Javascript
+- [x] Typescript
+
+**Linter**
+
+- [x] Solidity
+- [x] Javascript
+- [x] Typescript
+- [x] Lua
+- [ ] Rust

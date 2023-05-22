@@ -10,7 +10,6 @@ dotfiles checkout
 ## Terminal:
 
 - Tmux
-- Tmuxifier
 - Neovim
 - Zsh
 
