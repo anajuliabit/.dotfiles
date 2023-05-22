@@ -12,5 +12,5 @@ alias ...="cd ../.. && clear && ls"
 alias ....="cd ../../.. && clear && ls"
 alias .....="cd ../../../.. && clear && ls"
 alias vim='nvim'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/dev/code/dotfiles/ --work-tree=$HOME' 
+alias dot='/usr/bin/git --git-dir=$HOME/dev/code/dotfiles/ --work-tree=$HOME' 
 

@@ -5,7 +5,6 @@ v0.9.0
 # Plugins
 
 - copilot.vim
-- harpoon
 - mason-lspconfig.nvim
 - mason.nvim
 - neodev.nvim
@@ -21,6 +20,11 @@ v0.9.0
 - undotree
 - vim-fugitive
 - nvim-dap-vscode-js
+- oil.nvim
+- nvim-tree
+- marskman
+- harpoon
+- telekasten
 
 ## Theme
 
@@ -30,7 +34,7 @@ v0.9.0
 
 - [x] basic keymaps
 - LSP
-  - [x] Solidity - had to fork mason-registry. [opened PR to add solidity LSP to mason registry](https://github.com/mason-org/mason-registry/pull/1322)
+  - [x] Solidity
   - [x] Javascript
   - [x] Typescript
   - [x] Lua
@@ -47,5 +51,3 @@ v0.9.0
 - Extra plugins
   - [ ] Markdown preview
   - [x] Copilot
-- [ ] switch between projects with tmux
-- [ ] macos windows control

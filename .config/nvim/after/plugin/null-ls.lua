@@ -3,7 +3,6 @@ local null_ls = require("null-ls")
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
 			return client.name == "null-ls"
 		end,
 		bufnr = bufnr,
@@ -50,6 +49,16 @@ null_ls.setup({
 			extra_filetypes = { "solidity" },
 			--	args = { "--find-config-path", "--config", "--write" },
 		}),
+		null_ls.builtins.formatting.latexindent.with({
+			filetypes = { "tex", "bib" },
+			extra_args = { "-s", "-m", "-w", "-l", ".indentconfig.yaml", "-" },
+			root_dir = function(fname)
+				return require("lspconfig").util.find_git_ancestor(fname)
+					or vim.fn.expand("~")
+			end,
+		}),
+		null_ls.builtins.diagnostics.proselint,
+		null_ls.builtins.code_actions.proselint,
 	},
 	on_attach = on_attach,
 	debug = true,

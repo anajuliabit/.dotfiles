@@ -55,5 +55,9 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
-
+# 1password plugins
 source /Users/anajulia/.config/op/plugins.sh
+
+# tmuxifier
+export PATH='/Users/anajulia/.config/tmux/plugins/tmuxifier/bin/:/Users/anajulia/.nvm/versions/node/v16.15.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/go/bin:/Users/anajulia/.nvm/versions/node/v16.15.1/bin:/Users/anajulia/.local/share/zinit/plugins/bigH---git-fuzzy/bin:/Users/anajulia/.local/share/zinit/polaris/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/anajulia/.cargo/bin:/Users/anajulia/.local/bin:/Users/anajulia/.foundry/bin:/Users/anajulia/Library/Python/3.8/bin:/Users/anajulia/Dev/luarocks-3.9.2/lua_modules/bin/./../../lua_modules/bin:/Users/anajulia/.luarocks/bin:/Users/anajulia/.local/bin:/Users/anajulia/.foundry/bin:/Users/anajulia/Library/Python/3.8/bin:/Users/anajulia/Dev/luarocks-3.9.2/lua_modules/bin/./../../lua_modules/bin:/Users/anajulia/.luarocks/bin'
+export TMUXIFIER_LAYOUT_PATH="$HOME/.config/tmux/plugins/tmuxifier/layouts"

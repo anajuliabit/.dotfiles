@@ -124,4 +124,6 @@ return require("packer").startup(function(use)
 		"donRaphaco/neotex",
 		ft = { "tex" },
 	})
+	use("stevearc/oil.nvim")
+	use("nvim-tree/nvim-tree.lua")
 end)

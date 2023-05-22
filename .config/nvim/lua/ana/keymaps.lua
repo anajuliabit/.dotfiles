@@ -1,4 +1,3 @@
-vim.api.nvim_set_keymap("n", "<leader>e", ":Ex<CR>", {})
 vim.api.nvim_set_keymap("v", "p", '"_dP', {})
 vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", {})
 vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", {})

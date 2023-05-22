@@ -7,5 +7,6 @@
 	editor = nvim
 [pull]
 	rebase = false
-[alias]
 
+[alias]
+	gs = git status
