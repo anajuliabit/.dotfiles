@@ -50,8 +50,14 @@ null_ls.setup({
 			--	args = { "--find-config-path", "--config", "--write" },
 		}),
 		null_ls.builtins.formatting.latexindent.with({
-			filetypes = { "tex", "bib" },
-			extra_args = { "-s", "-m", "-w", "-l", ".indentconfig.yaml", "-" },
+			filetypes = { "tex" },
+			extra_args = {
+				"-s",
+				"-m",
+				"$FILENAME",
+				"-l",
+				".indentconfig.yaml",
+			},
 			root_dir = function(fname)
 				return require("lspconfig").util.find_git_ancestor(fname)
 					or vim.fn.expand("~")
