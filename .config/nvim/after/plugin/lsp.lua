@@ -31,7 +31,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local util = require("lspconfig.util")
 local lspconfig = require("lspconfig")
+
 lspconfig.tsserver.setup({
 	capabilities = capabilities,
 })
@@ -87,8 +89,18 @@ lspconfig.grammarly.setup({
 		"/Users/anajulia/.nvm/versions/node/v16.15.1/bin/grammarly-languageserver",
 		"--stdio",
 	},
+	root_dir = util.find_git_ancestor,
+	single_file_support = true,
+	handlers = {
+		["$/updateDocumentState"] = function()
+			return ""
+		end,
+	},
 	init_options = {
-		clientId = "",
+		clientId = os.getenv("GRAMMARLY_CLIENT_ID"),
+	},
+	default_config = {
+		root_dir = [[util.find_git_ancestor]],
 	},
 })
 
