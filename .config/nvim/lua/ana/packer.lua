@@ -25,6 +25,7 @@ return require("packer").startup(function(use)
 	use("theprimeagen/harpoon")
 	use("mbbill/undotree")
 	use("tpope/vim-fugitive")
+	use("nvim-tree/nvim-web-devicons")
 	use({
 		"williamboman/mason.nvim",
 		run = function()
@@ -50,9 +51,10 @@ return require("packer").startup(function(use)
 	use({
 		"rose-pine/neovim",
 		as = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme rose-pine")
-		end,
+	})
+	use({
+		"catppuccin/nvim",
+		as = "catppuccino",
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -67,20 +69,18 @@ return require("packer").startup(function(use)
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 	})
-
+	use("folke/trouble.nvim")
 	use({
-		"folke/trouble.nvim",
-		requires = "nvim-tree/nvim-web-devicons",
+		"mfussenegger/nvim-dap",
+		requires = {
+			"theHamsta/nvim-dap-virtual-text",
+		},
 	})
-	use({
-		"mxsdev/nvim-dap-vscode-js",
-		requires = { "mfussenegger/nvim-dap" },
-	})
-	use({
-		"microsoft/vscode-js-debug",
-		opt = true,
-		run = "npm install --legacy-peer-deps && npm run compile",
-	})
+	--	use({
+	--		"microsoft/vscode-js-debug",
+	--		opt = true,
+	--		run = "npm install --legacy-peer-deps && npm run compile",
+	--	})
 	use("github/copilot.vim")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("folke/neodev.nvim")
@@ -129,8 +129,16 @@ return require("packer").startup(function(use)
 		branch = "v2.x",
 		requires = {
 			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
 	})
+	--	use("jceb/vim-orgmode")
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("saadparwaiz1/cmp_luasnip")
+	use("L3MON4D3/LuaSnip")
+	use("rafamadriz/friendly-snippets")
+	use("simnalamburt/vim-mundo")
+	use("nvim-telescope/telescope-media-files.nvim")
+	use("nvim-lualine/lualine.nvim")
 end)

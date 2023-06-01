@@ -30,13 +30,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
-lspconfig.tsserver.setup({})
+lspconfig.tsserver.setup({
+	capabilities = capabilities,
+})
 lspconfig.rust_analyzer.setup({
 	-- Server-specific settings. See `:help lspconfig-setup`
 	settings = {
 		["rust-analyzer"] = {},
 	},
+	capabilities = capabilities,
 })
 lspconfig.solidity.setup({
 	cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
@@ -50,6 +54,7 @@ lspconfig.solidity.setup({
 		)(fname) or require("lspconfig.util").path.dirname(fname)
 	end,
 	single_file_support = true,
+	capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
@@ -73,11 +78,11 @@ lspconfig.lua_ls.setup({
 			},
 		},
 	},
+	capabilities = capabilities,
 })
 
 lspconfig.grammarly.setup({
 	filetypes = { "markdown", "tex", "text" },
-
 	cmd = {
 		"/Users/anajulia/.nvm/versions/node/v16.15.1/bin/grammarly-languageserver",
 		"--stdio",
@@ -87,4 +92,6 @@ lspconfig.grammarly.setup({
 	},
 })
 
-lspconfig.marksman.setup({})
+lspconfig.marksman.setup({
+	capabilities = capabilities,
+})

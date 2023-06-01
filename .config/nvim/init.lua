@@ -26,3 +26,9 @@ require("ana")
 --		prefix = "",
 --	},
 --})
+
+if vim.fn.has("persistent_undo") == 1 then -- check if your vim version supports it
+	vim.opt.undofile = true -- turn on the feature
+	vim.fn.mkdir(vim.fn.expand("$HOME") .. "/.vim/undo", "p")
+	vim.opt.undodir = vim.fn.expand("$HOME") .. "/.vim/undo" -- directory where the undo files will be stored
+end

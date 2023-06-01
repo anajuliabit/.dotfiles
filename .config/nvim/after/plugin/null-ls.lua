@@ -9,7 +9,6 @@ local lsp_formatting = function(bufnr)
 	})
 end
 
--- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
@@ -46,8 +45,9 @@ null_ls.setup({
 		--		}),
 		null_ls.builtins.diagnostics.solhint,
 		null_ls.builtins.formatting.prettier.with({
+			filetypes = { "javascript", "typescript", "markdown", "md" },
+			--args = { "--find-config-path", "--config", "--write" },
 			extra_filetypes = { "solidity" },
-			--	args = { "--find-config-path", "--config", "--write" },
 		}),
 		null_ls.builtins.formatting.latexindent.with({
 			filetypes = { "tex" },
@@ -63,9 +63,50 @@ null_ls.setup({
 					or vim.fn.expand("~")
 			end,
 		}),
-		null_ls.builtins.diagnostics.proselint,
-		null_ls.builtins.code_actions.proselint,
+		-- this was making python crash
+		--null_ls.builtins.diagnostics.proselint,
+		--null_ls.builtins.code_actions.proselint,
 	},
 	on_attach = on_attach,
 	debug = true,
 })
+
+local markdownlint = {
+	method = null_ls.methods.DIAGNOSTICS,
+	filetypes = { "markdown" },
+	-- null_ls.generator creates an async source
+	-- that spawns the command with the given arguments and options
+	generator = null_ls.generator({
+		command = "markdownlint",
+		args = { "--stdin" },
+		to_stdin = true,
+		from_stderr = true,
+		-- choose an output format (raw, json, or line)
+		format = "line",
+		check_exit_code = function(code, stderr)
+			local success = code <= 1
+
+			if not success then
+				-- can be noisy for things that run often (e.g. diagnostics), but can
+				-- be useful for things that run on demand (e.g. formatting)
+				print(stderr)
+			end
+
+			return success
+		end,
+		-- use helpers to parse the output from string matchers,
+		-- or parse it manually with a function
+		on_output = helpers.diagnostics.from_patterns({
+			{
+				pattern = [[:(%d+):(%d+) [%w-/]+ (.*)]],
+				groups = { "row", "col", "message" },
+			},
+			{
+				pattern = [[:(%d+) [%w-/]+ (.*)]],
+				groups = { "row", "message" },
+			},
+		}),
+	}),
+}
+
+null_ls.register(markdownlint)

@@ -1,3 +1,4 @@
+local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 
 local option = { noremap = true, silent = true }
@@ -16,7 +17,7 @@ vim.keymap.set("n", "<leader>fl", builtin.current_buffer_fuzzy_find, option)
 --	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 --end, option)
 
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		winblend = 0,
 		layout_config = {
@@ -42,4 +43,10 @@ require("telescope").setup({
 		},
 	},
 	extensions = {},
+	media_files = {
+		filetypes = { "png", "mp4", "jpg", "jpeg", "pdf" },
+		find_cmd = "rg",
+	},
 })
+
+telescope.load_extension("media_files")

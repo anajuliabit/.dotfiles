@@ -34,3 +34,18 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.o.clipboard = "unnamedplus"
+
+vim.cmd([[set tags+=tags]])
+vim.cmd([[
+  autocmd BufWritePost *.tex silent! !make format
+]])
+
+-- Give me some fenced codeblock goodness
+vim.g.markdown_fenced_languages = {
+	"javascript",
+	"typescript",
+	"lua",
+	"vim",
+	"solidity",
+	"rust",
+}

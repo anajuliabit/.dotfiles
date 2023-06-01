@@ -1,18 +1,32 @@
-local status_ok, dap_vscode_js = pcall(require, "dap-vscode-js")
-if not status_ok then
-	return
-end
-
-dap_vscode_js.setup({
-	debugger_path = vim.fn.stdpath("data")
-		.. "/mason/packages/js-debug-adapter",
-	debugger_cmd = { "js-debug-adapter" },
-	adapters = {
-		"pwa-node",
-	},
-})
+--local status_ok, dap_vscode_js = pcall(require, "dap-vscode-js")
+--if not status_ok then
+--	return
+--end
+--
+--dap_vscode_js.setup({
+--	debugger_path = vim.fn.stdpath("data")
+--		.. "/mason/packages/js-debug-adapter",
+--	debugger_cmd = { "js-debug-adapter" },
+--	adapters = {
+--		"pwa-node",
+--		"pwa-chrome",
+--		"pwa-msedge",
+--		"node-terminal",
+--		"pwa-extensionHost",
+--	},
+--})
 
 local dap = require("dap")
+
+dap.adapters["pwa-node"] = {
+	type = "server",
+	host = "localhost",
+	port = "${port}",
+	executable = {
+		command = vim.fn.stdpath("data") .. "/mason/bin/js-debug-adapter",
+		args = { "${port}" },
+	},
+}
 dap.configurations.javascript = {
 	{
 		name = "Debug Tests",
@@ -30,11 +44,11 @@ dap.configurations.javascript = {
 		console = "integratedTerminal",
 		runtimeArgs = { "${workspaceFolder}/node_modules/.bin/hardhat", "test" },
 		rootPath = "${workspaceFolder}",
-		runtimeExecutable = "node",
+		--runtimeExecutable = "node",
 		internalConsoleOptions = "neverOpen",
-		outFiles = { "${workspaceFolder}/**/*.js", "**/@ethersproject/**/*.js" },
+		--outFiles = { "${workspaceFolder}/**/*.js", "**/@ethersproject/**/*.js" },
 		skipFiles = { "<node_internals>/**", "node_modules" },
-		port = 9229,
+		port = 8123,
 	},
 }
 
@@ -123,7 +137,6 @@ vim.api.nvim_set_keymap(
 	":lua require('dap').step_out()<CR>",
 	{}
 )
-
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>db",
